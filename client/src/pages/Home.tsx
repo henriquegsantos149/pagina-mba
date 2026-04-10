@@ -136,8 +136,7 @@ export default function Home() {
       <section id="sobre" className="py-20 md:py-32 border-b border-border">
         <div className="container">
           <div className="flex items-center gap-3 mb-2">
-            <p className="section-subtitle !mb-0 !text-lg font-bold">Reconhecido pelo MEC (Nota 5)</p>
-            <img src="/mec-logo.png" alt="Selo MEC" className="h-10 w-auto object-contain drop-shadow-md" />
+            <img src="/mec-logo.png" alt="Selo MEC" className="h-12 w-auto object-contain drop-shadow-md" />
           </div>
           <h2 className="section-title mb-12">Sobre o Programa</h2>
           
