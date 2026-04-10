@@ -139,9 +139,9 @@ export default function Home() {
           
           <div className="grid md:grid-cols-2 gap-12 mb-16">
             <div>
-              <div className="flex items-center gap-3 mb-4">
+              <div className="flex items-center gap-2 mb-4">
                 <h3 className="text-2xl font-bold text-foreground !mb-0">Reconhecido pelo MEC</h3>
-                <img src="/mec-logo.png" alt="Selo MEC" className="h-12 w-auto object-contain drop-shadow-md" />
+                <img src="/mec-logo.png" alt="Selo MEC" className="h-9 w-auto object-contain drop-shadow-md" />
               </div>
               <p className="text-muted-foreground leading-relaxed mb-6">
                 MBA em conjunto com a Universidade Anhanguera. Há mais de 25 anos a Anhanguera faz parte do futuro de diversos estudantes, com cursos de graduação, pós-graduação e de extensão, em diversas áreas do conhecimento.
