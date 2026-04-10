@@ -243,7 +243,7 @@ export default function Home() {
           <p className="text-lg text-muted-foreground mb-8 max-w-2xl mx-auto">
             Capacite-se com as tecnologias mais inovadoras do setor ambiental e torne-se um especialista em dados ambientais.
           </p>
-          <a href="https://api.whatsapp.com/send?phone=5521988374133&text=Quero%20ser%20atendido(a)%20pela%20equipe%20Ambiental%20Pro" target="_blank" rel="noopener noreferrer" className="inline-block bg-primary text-white px-6 py-3 rounded-full font-bold uppercase text-sm hover:opacity-90 transition-opacity">Gostaria de Mais Informações</a>
+          <a href="https://api.whatsapp.com/send?phone=5521988773695&text=Quero%20ser%20atendido(a)%20pela%20equipe%20Ambiental%20Pro" target="_blank" rel="noopener noreferrer" className="inline-block bg-primary text-white px-6 py-3 rounded-full font-bold uppercase text-sm hover:opacity-90 transition-opacity">Gostaria de Mais Informações</a>
         </div>
       </section>
 
@@ -266,8 +266,8 @@ export default function Home() {
             <div>
               <h4 className="font-bold text-foreground mb-4">Contato</h4>
               <ul className="space-y-2 text-sm text-muted-foreground">
-                <li><a href="tel:+5531999999999" className="hover:text-primary transition-colors">+55 (31) 9999-9999</a></li>
-                <li><a href="mailto:contato@ambientalpro.com" className="hover:text-primary transition-colors">contato@ambientalpro.com</a></li>
+                <li><a href="tel:+5521988773695" className="hover:text-primary transition-colors">+55 21 98877-3695</a></li>
+                <li><a href="mailto:henrique@ambientalpro.com.br" className="hover:text-primary transition-colors">henrique@ambientalpro.com.br</a></li>
               </ul>
             </div>
             <div>
