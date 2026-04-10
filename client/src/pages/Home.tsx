@@ -115,7 +115,7 @@ export default function Home() {
       <section className="py-20 md:py-32 border-b border-border">
         <div className="container">
           <div className="max-w-3xl">
-            <p className="section-subtitle">MBA</p>
+            <p className="section-subtitle !text-xl">MBA</p>
             <h1 className="section-title mb-6">
               Inteligência de Dados Ambientais
             </h1>
