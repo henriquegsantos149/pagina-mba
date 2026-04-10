@@ -97,9 +97,8 @@ export default function Home() {
       {/* Header */}
       <header className="border-b border-border sticky top-0 z-50 bg-background/95 backdrop-blur">
         <div className="container py-4 flex items-center justify-between">
-          <div className="text-2xl font-bold">
-            <span className="text-foreground">AMBIENTAL</span>
-            <span className="text-primary"> MBA</span>
+          <div className="flex-shrink-0">
+            <img src="/logo.png" alt="Ambiental Pro" className="h-10 w-auto object-contain" />
           </div>
           <nav className="hidden md:flex items-center gap-8">
             <a href="#" className="nav-link">Início</a>
