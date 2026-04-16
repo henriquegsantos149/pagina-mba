@@ -3,10 +3,10 @@ import { motion, AnimatePresence } from 'framer-motion';
 import { ChevronLeft, ChevronRight } from 'lucide-react';
 
 const testimonials = [
-  { id: 1, src: 'testimonial-1.png' },
-  { id: 2, src: 'testimonial-2.png' },
+  { id: 1, src: 'testimonial-1.jpg' },
+  { id: 2, src: 'testimonial-2.jpg' },
   { id: 3, src: 'testimonial-3.png' },
-  { id: 4, src: 'testimonial-4.png' },
+  { id: 4, src: 'testimonial-4.jpg' },
   { id: 5, src: 'testimonial-5.png' },
 ];
 
@@ -29,8 +29,13 @@ export default function Testimonials() {
     }
   };
 
-  const getSlideIndex = (index: number) => {
-    return (index + testimonials.length) % testimonials.length;
+  // Helper to calculate shortest distance in the loop
+  const getRelativePosition = (itemIndex: number) => {
+    let diff = itemIndex - currentIndex;
+    const len = testimonials.length;
+    if (diff > len / 2) diff -= len;
+    if (diff < -len / 2) diff += len;
+    return diff;
   };
 
   return (
@@ -44,60 +49,58 @@ export default function Testimonials() {
           <p className="text-[var(--color-brand-light)]/70 max-w-2xl mx-auto font-secondary">Resultados reais de quem já aplicou a inteligência de dados na prática.</p>
         </div>
 
-        <div className="relative flex items-center justify-center min-h-[400px] md:min-h-[500px]">
+        <div className="relative flex flex-col items-center min-h-[450px] md:min-h-[600px] justify-center">
           {/* Navigation Arrows */}
           <button 
             onClick={prevSlide}
-            className="absolute left-0 z-30 p-3 rounded-full bg-white/5 border border-white/10 text-[var(--color-brand-light)] hover:bg-brand-gradient hover:text-[var(--color-brand-dark)] transition-all hidden md:block"
+            className="absolute left-0 z-40 p-3 rounded-full bg-white/5 border border-white/10 text-[var(--color-brand-light)] hover:bg-brand-gradient hover:text-[var(--color-brand-dark)] transition-all hidden lg:block"
           >
             <ChevronLeft className="w-6 h-6" />
           </button>
           
           <button 
             onClick={nextSlide}
-            className="absolute right-0 z-30 p-3 rounded-full bg-white/5 border border-white/10 text-[var(--color-brand-light)] hover:bg-brand-gradient hover:text-[var(--color-brand-dark)] transition-all hidden md:block"
+            className="absolute right-0 z-40 p-3 rounded-full bg-white/5 border border-white/10 text-[var(--color-brand-light)] hover:bg-brand-gradient hover:text-[var(--color-brand-dark)] transition-all hidden lg:block"
           >
             <ChevronRight className="w-6 h-6" />
           </button>
 
-          <div className="flex items-center justify-center w-full gap-4 md:gap-12 perspective-[1000px]">
-            {[-1, 0, 1].map((offset) => {
-              const index = getSlideIndex(currentIndex + offset);
-              const isCenter = offset === 0;
-              const testimonial = testimonials[index];
+          <div className="relative w-full h-full flex items-center justify-center py-10 overflow-visible">
+            {testimonials.map((testimonial, i) => {
+              const relativePos = getRelativePosition(i);
+              const isActive = relativePos === 0;
+              const isVisible = Math.abs(relativePos) <= 1; // Show neighbors
 
               return (
                 <motion.div
                   key={testimonial.id}
                   initial={false}
                   animate={{
-                    scale: isCenter ? 1 : 0.85,
-                    opacity: isCenter ? 1 : 0.3,
-                    filter: isCenter ? 'blur(0px)' : 'blur(8px)',
-                    x: offset * (typeof window !== 'undefined' && window.innerWidth < 768 ? 0 : 40),
-                    zIndex: isCenter ? 20 : 10,
+                    x: relativePos * 280, // Small distance as requested
+                    scale: isActive ? 1 : 0.82,
+                    opacity: isVisible ? (isActive ? 1 : 0.4) : 0, // Fade out non-neighbors
+                    filter: isActive ? 'blur(0px)' : 'blur(6px)',
+                    zIndex: isActive ? 30 : 20 - Math.abs(relativePos),
+                    pointerEvents: isActive ? 'auto' : 'none',
                   }}
-                  transition={{ duration: 0.6, ease: [0.32, 0.72, 0, 1] }}
-                  className={`relative shrink-0 cursor-pointer transition-all duration-300 ${!isCenter ? 'hidden md:block pointer-events-none' : 'w-full md:w-[600px] z-20'}`}
-                  drag={isCenter ? "x" : false}
+                  transition={{
+                    type: "spring",
+                    stiffness: 260,
+                    damping: 25,
+                    mass: 0.8,
+                  }}
+                  drag={isActive ? "x" : false}
                   dragConstraints={{ left: 0, right: 0 }}
                   onDragEnd={handleDragEnd}
+                  className="absolute w-[300px] md:w-[500px] cursor-pointer"
                 >
-                  <AnimatePresence mode="wait">
-                    <motion.div
-                      key={testimonial.id}
-                      initial={{ opacity: 0 }}
-                      animate={{ opacity: 1 }}
-                      exit={{ opacity: 0 }}
-                      className="relative rounded-2xl overflow-hidden border border-white/10 shadow-2xl shadow-black/50"
-                    >
-                      <img 
-                        src={`${import.meta.env.BASE_URL}testimonials/${testimonial.src}`}
-                        alt={`Depoimento ${testimonial.id}`}
-                        className="w-full h-auto object-contain block"
-                      />
-                    </motion.div>
-                  </AnimatePresence>
+                  <div className="relative rounded-2xl overflow-hidden border border-white/10 shadow-[0_20px_50px_rgba(0,0,0,0.6)] bg-black">
+                    <img 
+                      src={`${import.meta.env.BASE_URL}testimonials/${testimonial.src}`}
+                      alt={`Depoimento ${i + 1}`}
+                      className="w-full h-auto object-contain block select-none pointer-events-none"
+                    />
+                  </div>
                 </motion.div>
               );
             })}
@@ -110,7 +113,7 @@ export default function Testimonials() {
             <button
               key={i}
               onClick={() => setCurrentIndex(i)}
-              className={`h-1.5 transition-all duration-300 rounded-full ${currentIndex === i ? 'w-8 bg-brand-gradient' : 'w-2 bg-white/10'}`}
+              className={`h-1.5 transition-all duration-300 rounded-full ${currentIndex === i ? 'w-8 bg-brand-gradient' : 'w-2 bg-white/10 hover:bg-white/20'}`}
             />
           ))}
         </div>
