@@ -117,8 +117,8 @@ export default function CourseInfo() {
               <Award className="w-10 h-10 text-[var(--color-brand-secondary)]" />
             </div>
             <div className="relative z-10">
-              <h3 className="text-2xl font-bold mb-2 text-[var(--color-brand-light)] font-primary uppercase tracking-wide">Chancela Anhanguera / Ambiental PRO</h3>
-              <p className="text-[var(--color-brand-light)]/70 text-lg">Um diploma de peso para sua carreira, unindo a tradição acadêmica da Anhanguera com a expertise prática da Ambiental PRO no setor ambiental.</p>
+              <h3 className="text-2xl font-bold mb-2 text-[var(--color-brand-light)] font-primary uppercase tracking-wide">Chancela Anhanguera</h3>
+              <p className="text-[var(--color-brand-light)]/70 text-lg">Um diploma de peso para sua carreira, com a tradição acadêmica da Anhanguera no setor ambiental.</p>
             </div>
           </motion.div>
 
