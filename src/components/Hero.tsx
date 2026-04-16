@@ -1,34 +1,51 @@
 import { motion } from 'framer-motion';
-import { Map, GraduationCap, ChevronDown } from 'lucide-react';
+import { ChevronDown } from 'lucide-react';
 
 export default function Hero() {
   return (
-    <section className="relative min-h-screen flex items-center justify-center overflow-hidden bg-[var(--color-brand-dark)]">
+    <section className="relative min-h-screen flex items-center justify-center overflow-hidden bg-black/20">
       {/* Background Elements */}
       <div className="absolute inset-0 bg-grid opacity-70"></div>
-      <div className="remediation-pulse opacity-50"></div>
       
       {/* Overlay gradient for readability */}
-      <div className="absolute inset-0 bg-gradient-to-b from-transparent via-[var(--color-brand-dark)]/80 to-[var(--color-brand-dark)] opacity-100 pointer-events-none"></div>
+      <div className="absolute inset-0 bg-gradient-to-b from-transparent via-[var(--color-brand-dark)]/40 to-black/20 opacity-100 pointer-events-none"></div>
 
-      <div className="relative z-10 w-full max-w-7xl mx-auto px-6 pt-20 pb-16 text-center flex flex-col items-center">
+      <div className="relative z-10 w-full max-w-7xl mx-auto px-6 pt-28 pb-16 text-center flex flex-col items-center">
         
         {/* Badges */}
         <motion.div 
           initial={{ opacity: 0, y: -20 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.6 }}
-          className="flex flex-wrap justify-center gap-3 mb-8"
+          className="flex flex-wrap items-center justify-center gap-10 md:gap-16 mb-12"
         >
-          <div className="shape-leaf flex items-center gap-2 bg-white/5 border border-[var(--color-brand-light)]/20 px-5 py-2.5 text-sm font-medium text-[var(--color-brand-light)]">
-            <GraduationCap className="w-4 h-4 text-[var(--color-brand-green1)]" />
-            <span>Homologado MEC (Nota 5)</span>
-          </div>
+          {/* Ambiental Pro */}
+          <a 
+            href="https://www.ambientalpro.com.br/"
+            target="_blank"
+            rel="noopener noreferrer"
+            className="group"
+          >
+            <img 
+              src={`${import.meta.env.BASE_URL}logo-ambientalpro.png`} 
+              alt="Ambiental Pro" 
+              className="h-10 md:h-14 w-auto object-contain group-hover:scale-105 transition-transform"
+            />
+          </a>
 
-          <div className="shape-leaf flex items-center gap-2 bg-white/5 border border-white/20 px-5 py-2.5 text-sm font-medium text-[var(--color-brand-light)]">
-            <Map className="w-4 h-4 text-[var(--color-brand-green2)]" />
-            <span>Anhanguera</span>
-          </div>
+          {/* MEC */}
+          <a 
+            href="https://emec.mec.gov.br/emec/consulta-cadastro/detalhamento/d96957f455f6405d14c6542552b0f6eb/NTE1/93916316abe23148507bd4c260e4b878/MjU4NDQ1" 
+            target="_blank"
+            rel="noopener noreferrer"
+            className="group"
+          >
+            <img 
+              src={`${import.meta.env.BASE_URL}mec-badge.png`} 
+              alt="Selo MEC" 
+              className="h-14 md:h-20 w-auto object-contain group-hover:scale-105 transition-transform"
+            />
+          </a>
         </motion.div>
 
         {/* Title */}
@@ -36,13 +53,13 @@ export default function Hero() {
           initial={{ opacity: 0, y: 20 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.6, delay: 0.2 }}
-          className="text-5xl md:text-7xl font-bold tracking-tight mb-6 max-w-5xl uppercase leading-tight font-primary"
+          className="text-3xl sm:text-4xl md:text-6xl font-bold tracking-tight mb-6 max-w-5xl uppercase leading-tight font-primary"
         >
-          Pós-Graduação em <br className="hidden md:block" />
-          <span className="inline-block bg-brand-gradient text-[var(--color-brand-dark)] px-4 py-1 mt-2 mb-1 shape-leaf transform -skew-x-6">
-            <span className="inline-block skew-x-6">Gerenciamento e Remediação</span>
-          </span> <br className="hidden md:block" />
-          de Áreas Contaminadas
+          MBA em <br className="md:block" />
+          <span className="inline-block bg-brand-gradient text-[var(--color-brand-dark)] px-3 py-1 md:px-4 md:py-1 mt-2 mb-1 shape-leaf transform -skew-x-6">
+            <span className="inline-block skew-x-6">Inteligência de Dados</span>
+          </span> <br className="md:block" />
+          Ambientais
         </motion.h1>
 
         {/* Subtitle */}
@@ -52,7 +69,7 @@ export default function Hero() {
           transition={{ duration: 0.6, delay: 0.4 }}
           className="text-lg md:text-xl text-[var(--color-brand-light)]/70 mb-10 max-w-3xl leading-relaxed font-secondary"
         >
-          Pós-Graduação focada em formar profissionais especializados na identificação, avaliação e remediação de áreas contaminadas, com base em normas técnicas, legislações ambientais vigentes e boas práticas de engenharia e geociências.
+          Pós-Graduação que desenvolve habilidades práticas, técnicas e gerenciais em tecnologias inovadoras na área ambiental, com uma abordagem abrangente e atualizada sobre gestão, análise e visualização de dados.
         </motion.p>
 
         {/* CTA Button */}
@@ -61,7 +78,13 @@ export default function Hero() {
           animate={{ opacity: 1, scale: 1 }}
           transition={{ duration: 0.6, delay: 0.6 }}
         >
-          <a href="#inscreva-se" aria-label="Inscreva-se agora na Pós-Graduação em Gerenciamento e Remediação de Áreas Contaminadas" className="shape-leaf group relative inline-flex items-center justify-center gap-3 px-10 py-5 bg-brand-gradient text-[var(--color-brand-dark)] font-bold text-lg overflow-hidden transition-transform hover:scale-105 active:scale-95 shadow-[0_0_20px_var(--color-brand-green2)]/30">
+          <a 
+            href="https://pay.voompcreators.com.br/2385/offer/LV3OY1/?utm_source=site_anhanguera" 
+            target="_blank"
+            rel="noopener noreferrer"
+            aria-label="Inscreva-se agora no MBA em Inteligência de Dados Ambientais" 
+            className="shape-leaf group relative inline-flex items-center justify-center gap-3 px-10 py-5 bg-brand-gradient text-[var(--color-brand-dark)] font-bold text-lg overflow-hidden transition-all hover:scale-105 active:scale-95 shadow-[0_0_20px_var(--color-brand-primary)]/30 hover:shadow-[0_0_30px_var(--color-brand-primary)]/50"
+          >
             <span className="relative z-10 transition-colors uppercase tracking-wider font-primary">Inscreva-se Agora</span>
             <div className="absolute inset-0 bg-white/20 translate-y-full group-hover:translate-y-0 transition-transform duration-300 ease-in-out"></div>
           </a>
@@ -74,7 +97,7 @@ export default function Hero() {
           transition={{ delay: 1, duration: 1 }}
           className="absolute bottom-10 animate-bounce"
         >
-          <ChevronDown className="w-8 h-8 text-[var(--color-brand-green2)] opacity-70" />
+          <ChevronDown className="w-8 h-8 text-[var(--color-brand-accent)] opacity-70" />
         </motion.div>
 
       </div>

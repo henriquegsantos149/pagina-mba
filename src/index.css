@@ -2,10 +2,11 @@
 
 @theme {
   --color-brand-dark: #010404;
-  --color-brand-light: #E6E8E6;
-  --color-brand-green1: #6FB03A;
-  --color-brand-green2: #58AE69;
-  --color-brand-blue: #31A8A8;
+  --color-brand-light: #F2F2F2;
+  --color-brand-primary: #0FA60A;
+  --color-brand-secondary: #51A629;
+  --color-brand-accent: #9ABF4B;
+  --color-brand-gray: #585859;
   
   --font-primary: 'Outfit', sans-serif;
   --font-secondary: 'Montserrat', sans-serif;
@@ -34,68 +35,30 @@
   }
   
   .bg-brand-gradient {
-    background: linear-gradient(90deg, var(--color-brand-green1), var(--color-brand-green2), var(--color-brand-blue));
+    background: linear-gradient(90deg, var(--color-brand-primary), var(--color-brand-secondary), var(--color-brand-accent));
   }
   
   .text-brand-gradient {
-    background: linear-gradient(90deg, var(--color-brand-green1), var(--color-brand-green2), var(--color-brand-blue));
+    background: linear-gradient(90deg, var(--color-brand-primary), var(--color-brand-secondary), var(--color-brand-accent));
     -webkit-background-clip: text;
     -webkit-text-fill-color: transparent;
     background-clip: text;
+    -webkit-box-decoration-break: clone;
+    box-decoration-break: clone;
   }
 }
 
 .bg-grid {
   background-size: 60px 60px;
   background-image: 
-    linear-gradient(to right, rgba(49, 168, 168, 0.08) 1px, transparent 1px),
-    linear-gradient(to bottom, rgba(111, 176, 58, 0.08) 1px, transparent 1px);
+    linear-gradient(to right, rgba(15, 166, 10, 0.08) 1px, transparent 1px),
+    linear-gradient(to bottom, rgba(154, 191, 75, 0.08) 1px, transparent 1px);
   position: absolute;
   inset: 0;
 }
 
-/* Glowing grid accents */
-.bg-grid::before {
-  content: '';
-  position: absolute;
-  left: 30%;
-  top: 0;
-  width: 1px;
-  height: 100%;
-  background: linear-gradient(to bottom, transparent, var(--color-brand-green1), transparent);
-  box-shadow: 0 0 15px 3px var(--color-brand-green1);
-  opacity: 0.3;
-}
 
-.bg-grid::after {
-  content: '';
-  position: absolute;
-  top: 40%;
-  left: 0;
-  width: 100%;
-  height: 1px;
-  background: linear-gradient(to right, transparent, var(--color-brand-blue), transparent);
-  box-shadow: 0 0 15px 3px var(--color-brand-blue);
-  opacity: 0.3;
-}
 
-.remediation-pulse {
-  position: absolute;
-  top: 50%;
-  left: 50%;
-  width: 100vw;
-  height: 100vw;
-  max-width: 900px;
-  max-height: 900px;
-  transform: translate(-50%, -50%);
-  border-radius: 50%;
-  background: radial-gradient(circle, rgba(111, 176, 58, 0.15) 0%, rgba(49, 168, 168, 0.05) 50%, transparent 70%);
-  box-shadow: 0 0 100px 50px rgba(111, 176, 58, 0.05);
-  animation: bio-pulse 6s infinite alternate ease-in-out;
-  pointer-events: none;
-}
 
-@keyframes bio-pulse {
-  0% { transform: translate(-50%, -50%) scale(0.8); opacity: 0.4; }
-  100% { transform: translate(-50%, -50%) scale(1.1); opacity: 0.9; }
-}
+
+

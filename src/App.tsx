@@ -1,25 +1,44 @@
+import Header from './components/Header'
 import Hero from './components/Hero'
-import CourseInfo from './components/CourseInfo'
-import Faculty from './components/Faculty'
+import ProblemObjective from './components/ProblemObjective'
 import Curriculum from './components/Curriculum'
-import Differentials from './components/Differentials'
+import SkillsAcquired from './components/SkillsAcquired'
+import PracticalApplications from './components/PracticalApplications'
+import TargetAudience from './components/TargetAudience'
+import Faculty from './components/Faculty'
+import CourseInfo from './components/CourseInfo'
+import Testimonials from './components/Testimonials'
+import FAQ from './components/FAQ'
 import CallToAction from './components/CallToAction'
+import StickyCTA from './components/StickyCTA'
 
 function App() {
   return (
-    <main className="w-full min-h-screen bg-[var(--color-brand-dark)] text-[var(--color-brand-light)] font-secondary selection:bg-[var(--color-brand-green1)] selection:text-[var(--color-brand-dark)]">
+    <main className="w-full min-h-screen bg-[var(--color-brand-dark)] text-[var(--color-brand-light)] font-secondary selection:bg-[var(--color-brand-primary)] selection:text-[var(--color-brand-dark)]">
+      <Header />
       <Hero />
-      <CourseInfo />
+      <ProblemObjective />
       <Curriculum />
+      <SkillsAcquired />
+      <PracticalApplications />
+      <TargetAudience />
       <Faculty />
-      <Differentials />
-      <CallToAction />
+      <CourseInfo />
+      <Testimonials />
+      <FAQ />
+      
+      <div className="py-12 bg-black/40">
+        <CallToAction />
+      </div>
+      
+      <StickyCTA />
       
       <footer className="bg-black/60 border-t border-white/5 py-10 text-center text-[var(--color-brand-light)]/40 text-sm">
-        <p className="font-secondary tracking-widest uppercase">© {new Date().getFullYear()} Pós-Graduação em GRAC. Todos os direitos reservados.</p>
+        <p className="font-secondary tracking-widest uppercase">© {new Date().getFullYear()} MBA Inteligência de Dados Ambientais. Todos os direitos reservados.</p>
       </footer>
     </main>
   )
 }
+
 
 export default App
