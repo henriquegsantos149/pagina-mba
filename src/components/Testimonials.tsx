@@ -1,5 +1,5 @@
 import { useState, useCallback } from 'react';
-import { motion, AnimatePresence } from 'framer-motion';
+import { motion } from 'framer-motion';
 import { ChevronLeft, ChevronRight } from 'lucide-react';
 
 const testimonials = [
@@ -21,7 +21,7 @@ export default function Testimonials() {
     setCurrentIndex((prev) => (prev - 1 + testimonials.length) % testimonials.length);
   }, []);
 
-  const handleDragEnd = (event: any, info: any) => {
+  const handleDragEnd = (_: any, info: any) => {
     if (info.offset.x > 50) {
       prevSlide();
     } else if (info.offset.x < -50) {
