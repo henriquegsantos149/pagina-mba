@@ -60,7 +60,7 @@ export default function Faculty() {
                 <img 
                   src={member.image} 
                   alt={`${member.name} – Professor do MBA em Inteligência de Dados Ambientais`} 
-                  className="w-full h-full object-cover grayscale group-hover:grayscale-0 group-hover:scale-105 transition-all duration-700 ease-in-out"
+                  className="w-full h-full object-cover md:grayscale group-hover:grayscale-0 group-hover:scale-105 transition-all duration-700 ease-in-out"
                 />
               </div>
               <div className="p-6 flex-1 flex flex-col justify-between">
