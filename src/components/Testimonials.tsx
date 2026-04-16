@@ -1,6 +1,6 @@
-import { useState, useEffect, useCallback, useRef } from 'react';
+import { useState, useCallback } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
-import { ChevronLeft, ChevronRight, Pause, Play } from 'lucide-react';
+import { ChevronLeft, ChevronRight } from 'lucide-react';
 
 const testimonials = [
   { id: 1, src: 'testimonial-1.png' },
@@ -12,8 +12,6 @@ const testimonials = [
 
 export default function Testimonials() {
   const [currentIndex, setCurrentIndex] = useState(0);
-  const [isPaused, setIsPaused] = useState(false);
-  const autoPlayRef = useRef<NodeJS.Timeout | null>(null);
 
   const nextSlide = useCallback(() => {
     setCurrentIndex((prev) => (prev + 1) % testimonials.length);
@@ -22,15 +20,6 @@ export default function Testimonials() {
   const prevSlide = useCallback(() => {
     setCurrentIndex((prev) => (prev - 1 + testimonials.length) % testimonials.length);
   }, []);
-
-  useEffect(() => {
-    if (!isPaused) {
-      autoPlayRef.current = setInterval(nextSlide, 7000);
-    }
-    return () => {
-      if (autoPlayRef.current) clearInterval(autoPlayRef.current);
-    };
-  }, [isPaused, nextSlide]);
 
   const handleDragEnd = (event: any, info: any) => {
     if (info.offset.x > 50) {
@@ -90,7 +79,6 @@ export default function Testimonials() {
                   }}
                   transition={{ duration: 0.6, ease: [0.32, 0.72, 0, 1] }}
                   className={`relative shrink-0 cursor-pointer transition-all duration-300 ${!isCenter ? 'hidden md:block pointer-events-none' : 'w-full md:w-[600px] z-20'}`}
-                  onClick={() => isCenter && setIsPaused(!isPaused)}
                   drag={isCenter ? "x" : false}
                   dragConstraints={{ left: 0, right: 0 }}
                   onDragEnd={handleDragEnd}
@@ -108,18 +96,6 @@ export default function Testimonials() {
                         alt={`Depoimento ${testimonial.id}`}
                         className="w-full h-auto object-contain block"
                       />
-                      
-                      {isCenter && (
-                        <div className="absolute top-4 right-4 z-30">
-                          <motion.div 
-                            initial={{ opacity: 0 }}
-                            animate={{ opacity: 1 }}
-                            className="bg-black/40 backdrop-blur-md p-2 rounded-full border border-white/10"
-                          >
-                            {isPaused ? <Play className="w-4 h-4 text-white" /> : <Pause className="w-4 h-4 text-white" />}
-                          </motion.div>
-                        </div>
-                      )}
                     </motion.div>
                   </AnimatePresence>
                 </motion.div>
