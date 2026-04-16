@@ -1,5 +1,5 @@
 import { motion } from 'framer-motion';
-import { Database, LineChart, Target, AlertTriangle } from 'lucide-react';
+import { Database, Target, AlertTriangle } from 'lucide-react';
 
 export default function ProblemObjective() {
   return (

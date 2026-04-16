@@ -1,5 +1,5 @@
 import { motion } from 'framer-motion';
-import { Terminal, Lightbulb, Map, Globe, Database, BrainCircuit, Activity } from 'lucide-react';
+import { Terminal, Map, Globe, Database, BrainCircuit, Activity } from 'lucide-react';
 
 const skills = [
   {
