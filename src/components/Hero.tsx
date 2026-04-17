@@ -29,7 +29,7 @@ export default function Hero() {
             <img 
               src={`${import.meta.env.BASE_URL}logo-ambientalpro.png`} 
               alt="Ambiental Pro" 
-              className="h-10 md:h-14 w-auto object-contain group-hover:scale-105 transition-transform"
+              className="h-12 md:h-16 w-auto object-contain group-hover:scale-105 transition-transform"
             />
           </a>
 
@@ -43,7 +43,7 @@ export default function Hero() {
             <img 
               src={`${import.meta.env.BASE_URL}mec-badge.png`} 
               alt="Selo MEC" 
-              className="h-14 md:h-20 w-auto object-contain group-hover:scale-105 transition-transform"
+              className="h-16 md:h-24 w-auto object-contain group-hover:scale-105 transition-transform"
             />
           </a>
         </motion.div>
