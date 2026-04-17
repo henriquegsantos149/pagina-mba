@@ -35,7 +35,7 @@ export default function Hero() {
 
           {/* MEC */}
           <a 
-            href="https://emec.mec.gov.br/emec/consulta-cadastro/detalhamento/d96957f455f6405d14c6542552b0f6eb/NTE1/93916316abe23148507bd4c260e4b878/MjU4NDQ1" 
+            href="https://emec.mec.gov.br/emec/consulta-cadastro/detalhamento/d96957f455f6405d14c6542552b0f6eb/NTE1/93916316abe23148507bd4c260e4b878/MzEyODY5" 
             target="_blank"
             rel="noopener noreferrer"
             className="group"
