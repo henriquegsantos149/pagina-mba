@@ -48,15 +48,14 @@ export default function Hero() {
           </a>
         </motion.div>
 
-        {/* Title */}
         <motion.h1 
           initial={{ opacity: 0, y: 20 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.6, delay: 0.2 }}
-          className="text-3xl sm:text-4xl md:text-6xl font-bold tracking-tight mb-6 max-w-5xl uppercase leading-tight font-primary"
+          className="text-4xl sm:text-6xl md:text-7xl lg:text-[5rem] font-bold tracking-tight mb-8 max-w-6xl uppercase leading-[1.1] font-primary"
         >
           MBA em <br className="md:block" />
-          <span className="inline-block bg-brand-gradient text-[var(--color-brand-dark)] px-3 py-1 md:px-4 md:py-1 mt-2 mb-1 shape-leaf transform -skew-x-6">
+          <span className="inline-block bg-brand-gradient text-[var(--color-brand-dark)] px-4 py-2 md:px-6 md:py-2 mt-4 mb-2 shape-leaf transform -skew-x-6">
             <span className="inline-block skew-x-6">Inteligência de Dados</span>
           </span> <br className="md:block" />
           Ambientais
