@@ -33,7 +33,7 @@ export default function CallToAction() {
           
           <div className="relative z-10 space-y-4 sm:space-y-0 sm:flex sm:justify-center sm:gap-6">
             <a 
-              href="https://pay.voompcreators.com.br/2385/offer/LV3OY1/?utm_source=site_anhanguera"
+              href="https://pay.voompcreators.com.br/13467"
               target="_blank"
               rel="noopener noreferrer"
               aria-label="Inscreva-se agora no MBA em Inteligência de Dados Ambientais"
