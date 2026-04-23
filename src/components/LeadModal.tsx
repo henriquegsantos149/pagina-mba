@@ -1,6 +1,6 @@
 import { useState } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
-import { X, Send, Loader2 } from 'lucide-react';
+import { X, Send, Loader2, Check } from 'lucide-react';
 
 interface LeadModalProps {
   isOpen: boolean;
@@ -9,6 +9,16 @@ interface LeadModalProps {
 
 export default function LeadModal({ isOpen, onClose }: LeadModalProps) {
   const [loading, setLoading] = useState(false);
+  const [submitted, setSubmitted] = useState(false);
+
+  const handleClose = () => {
+    onClose();
+    // Reset state after animation finishes
+    setTimeout(() => {
+      setSubmitted(false);
+      setLoading(false);
+    }, 300);
+  };
   const [formData, setFormData] = useState({
     nome: '',
     email: '',
@@ -66,12 +76,14 @@ export default function LeadModal({ isOpen, onClose }: LeadModalProps) {
 
       // Pequeno timeout apenas para o usuário ver o estado de "loading" por um breve momento (melhora UX)
       setTimeout(() => {
-        window.location.href = 'https://pay.voompcreators.com.br/13467';
-      }, 100);
+        setLoading(false);
+        setSubmitted(true);
+      }, 800);
 
     } catch (error) {
       console.error('Error submitting lead:', error);
-      window.location.href = 'https://pay.voompcreators.com.br/13467';
+      setLoading(false);
+      setSubmitted(true); // Still show success message to user as the data was likely sent via keepalive/no-cors
     }
   };
 
@@ -84,7 +96,7 @@ export default function LeadModal({ isOpen, onClose }: LeadModalProps) {
             initial={{ opacity: 0 }}
             animate={{ opacity: 1 }}
             exit={{ opacity: 0 }}
-            onClick={onClose}
+            onClick={handleClose}
             className="absolute inset-0 bg-black/80 backdrop-blur-sm"
           />
 
@@ -100,126 +112,150 @@ export default function LeadModal({ isOpen, onClose }: LeadModalProps) {
             <div className="absolute -bottom-10 -left-10 w-32 h-32 bg-brand-gradient opacity-10 rounded-full blur-3xl pointer-events-none" />
 
             <button
-              onClick={onClose}
+              onClick={handleClose}
               className="absolute top-4 right-4 text-white/40 hover:text-white transition-colors"
             >
               <X className="w-6 h-6" />
             </button>
 
             <div className="relative z-10">
-              <h2 className="text-3xl md:text-4xl font-bold font-primary uppercase tracking-tight mb-2">
-                Falta Pouco!
-              </h2>
-              <p className="text-[var(--color-brand-light)]/60 font-secondary text-sm md:text-base mb-8">
-                Preencha os dados abaixo para continuar sua inscrição no MBA em Inteligência de Dados Ambientais.
-              </p>
+              {!submitted ? (
+                <>
+                  <h2 className="text-3xl md:text-4xl font-bold font-primary uppercase tracking-tight mb-2">
+                    Falta Pouco!
+                  </h2>
+                  <p className="text-[var(--color-brand-light)]/60 font-secondary text-sm md:text-base mb-8">
+                    Preencha os dados abaixo para continuar sua inscrição no MBA em Inteligência de Dados Ambientais.
+                  </p>
 
-              <form onSubmit={handleSubmit} className="space-y-5">
-                <div>
-                  <label className="block text-[var(--color-brand-primary)] text-xs font-bold uppercase tracking-widest mb-2">
-                    Nome Completo
-                  </label>
-                  <input
-                    type="text"
-                    name="nome"
-                    required
-                    value={formData.nome}
-                    onChange={handleChange}
-                    placeholder="Seu nome aqui"
-                    className="w-full bg-white/5 border border-white/10 rounded-lg px-4 py-3 text-white placeholder:text-white/20 focus:outline-none focus:border-[var(--color-brand-primary)]/50 transition-colors"
-                  />
-                </div>
-
-                <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
-                  <div>
-                    <label className="block text-[var(--color-brand-primary)] text-xs font-bold uppercase tracking-widest mb-2">
-                      E-mail
-                    </label>
-                    <input
-                      type="email"
-                      name="email"
-                      required
-                      value={formData.email}
-                      onChange={handleChange}
-                      placeholder="email@exemplo.com"
-                      className="w-full bg-white/5 border border-white/10 rounded-lg px-4 py-3 text-white placeholder:text-white/20 focus:outline-none focus:border-[var(--color-brand-primary)]/50 transition-colors"
-                    />
-                  </div>
-                  <div>
-                    <label className="block text-[var(--color-brand-primary)] text-xs font-bold uppercase tracking-widest mb-2">
-                      Telefone / WhatsApp
-                    </label>
-                    <input
-                      type="tel"
-                      name="telefone"
-                      required
-                      value={formData.telefone}
-                      onChange={handleChange}
-                      placeholder="(00) 00000-0000"
-                      className="w-full bg-white/5 border border-white/10 rounded-lg px-4 py-3 text-white placeholder:text-white/20 focus:outline-none focus:border-[var(--color-brand-primary)]/50 transition-colors"
-                    />
-                  </div>
-                </div>
-
-                <div>
-                  <label className="block text-[var(--color-brand-primary)] text-xs font-bold uppercase tracking-widest mb-2">
-                    Possui Formação?
-                  </label>
-                  <select
-                    name="formacao"
-                    required
-                    value={formData.formacao}
-                    onChange={handleChange}
-                    className="w-full bg-white/5 border border-white/10 rounded-lg px-4 py-3 text-white focus:outline-none focus:border-[var(--color-brand-primary)]/50 transition-colors appearance-none cursor-pointer"
-                  >
-                    <option value="" className="bg-[#1A1A1A]">Selecione...</option>
-                    <option value="Sim" className="bg-[#1A1A1A]">Sim</option>
-                    <option value="Não" className="bg-[#1A1A1A]">Não</option>
-                  </select>
-                </div>
-
-                <AnimatePresence>
-                  {formData.formacao === 'Sim' && (
-                    <motion.div
-                      initial={{ opacity: 0, height: 0 }}
-                      animate={{ opacity: 1, height: 'auto' }}
-                      exit={{ opacity: 0, height: 0 }}
-                      className="overflow-hidden"
-                    >
+                  <form onSubmit={handleSubmit} className="space-y-5">
+                    <div>
                       <label className="block text-[var(--color-brand-primary)] text-xs font-bold uppercase tracking-widest mb-2">
-                        Área de Formação
+                        Nome Completo
                       </label>
                       <input
                         type="text"
-                        name="area"
-                        required={formData.formacao === 'Sim'}
-                        value={formData.area}
+                        name="nome"
+                        required
+                        value={formData.nome}
                         onChange={handleChange}
-                        placeholder="Ex: Engenharia Ambiental, Biologia..."
+                        placeholder="Seu nome aqui"
                         className="w-full bg-white/5 border border-white/10 rounded-lg px-4 py-3 text-white placeholder:text-white/20 focus:outline-none focus:border-[var(--color-brand-primary)]/50 transition-colors"
                       />
-                    </motion.div>
-                  )}
-                </AnimatePresence>
+                    </div>
 
-                <button
-                  type="submit"
-                  disabled={loading}
-                  className="w-full shape-leaf bg-brand-gradient text-[var(--color-brand-dark)] font-bold py-4 mt-4 flex items-center justify-center gap-3 hover:scale-[1.02] active:scale-[0.98] transition-all disabled:opacity-50 disabled:cursor-not-allowed shadow-[0_0_20px_rgba(15,166,10,0.3)]"
+                    <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
+                      <div>
+                        <label className="block text-[var(--color-brand-primary)] text-xs font-bold uppercase tracking-widest mb-2">
+                          E-mail
+                        </label>
+                        <input
+                          type="email"
+                          name="email"
+                          required
+                          value={formData.email}
+                          onChange={handleChange}
+                          placeholder="email@exemplo.com"
+                          className="w-full bg-white/5 border border-white/10 rounded-lg px-4 py-3 text-white placeholder:text-white/20 focus:outline-none focus:border-[var(--color-brand-primary)]/50 transition-colors"
+                        />
+                      </div>
+                      <div>
+                        <label className="block text-[var(--color-brand-primary)] text-xs font-bold uppercase tracking-widest mb-2">
+                          Telefone / WhatsApp
+                        </label>
+                        <input
+                          type="tel"
+                          name="telefone"
+                          required
+                          value={formData.telefone}
+                          onChange={handleChange}
+                          placeholder="(00) 00000-0000"
+                          className="w-full bg-white/5 border border-white/10 rounded-lg px-4 py-3 text-white placeholder:text-white/20 focus:outline-none focus:border-[var(--color-brand-primary)]/50 transition-colors"
+                        />
+                      </div>
+                    </div>
+
+                    <div>
+                      <label className="block text-[var(--color-brand-primary)] text-xs font-bold uppercase tracking-widest mb-2">
+                        Possui Formação?
+                      </label>
+                      <select
+                        name="formacao"
+                        required
+                        value={formData.formacao}
+                        onChange={handleChange}
+                        className="w-full bg-white/5 border border-white/10 rounded-lg px-4 py-3 text-white focus:outline-none focus:border-[var(--color-brand-primary)]/50 transition-colors appearance-none cursor-pointer"
+                      >
+                        <option value="" className="bg-[#1A1A1A]">Selecione...</option>
+                        <option value="Sim" className="bg-[#1A1A1A]">Sim</option>
+                        <option value="Não" className="bg-[#1A1A1A]">Não</option>
+                      </select>
+                    </div>
+
+                    <AnimatePresence>
+                      {formData.formacao === 'Sim' && (
+                        <motion.div
+                          initial={{ opacity: 0, height: 0 }}
+                          animate={{ opacity: 1, height: 'auto' }}
+                          exit={{ opacity: 0, height: 0 }}
+                          className="overflow-hidden"
+                        >
+                          <label className="block text-[var(--color-brand-primary)] text-xs font-bold uppercase tracking-widest mb-2">
+                            Área de Formação
+                          </label>
+                          <input
+                            type="text"
+                            name="area"
+                            required={formData.formacao === 'Sim'}
+                            value={formData.area}
+                            onChange={handleChange}
+                            placeholder="Ex: Engenharia Ambiental, Biologia..."
+                            className="w-full bg-white/5 border border-white/10 rounded-lg px-4 py-3 text-white placeholder:text-white/20 focus:outline-none focus:border-[var(--color-brand-primary)]/50 transition-colors"
+                          />
+                        </motion.div>
+                      )}
+                    </AnimatePresence>
+
+                    <button
+                      type="submit"
+                      disabled={loading}
+                      className="w-full shape-leaf bg-brand-gradient text-[var(--color-brand-dark)] font-bold py-4 mt-4 flex items-center justify-center gap-3 hover:scale-[1.02] active:scale-[0.98] transition-all disabled:opacity-50 disabled:cursor-not-allowed shadow-[0_0_20px_rgba(15,166,10,0.3)]"
+                    >
+                      {loading ? (
+                        <>
+                          <Loader2 className="w-5 h-5 animate-spin" />
+                          PROCESSANDO...
+                        </>
+                      ) : (
+                        <>
+                          CONTINUAR PARA INSCRIÇÃO
+                          <Send className="w-5 h-5" />
+                        </>
+                      )}
+                    </button>
+                  </form>
+                </>
+              ) : (
+                <motion.div 
+                  initial={{ opacity: 0, scale: 0.9 }}
+                  animate={{ opacity: 1, scale: 1 }}
+                  className="text-center py-8"
                 >
-                  {loading ? (
-                    <>
-                      <Loader2 className="w-5 h-5 animate-spin" />
-                      PROCESSANDO...
-                    </>
-                  ) : (
-                    <>
-                      CONTINUAR PARA INSCRIÇÃO
-                      <Send className="w-5 h-5" />
-                    </>
-                  )}
-                </button>
-              </form>
+                  <div className="w-20 h-20 bg-brand-gradient rounded-full flex items-center justify-center mx-auto mb-6 shadow-[0_0_30px_rgba(15,166,10,0.4)]">
+                    <Check className="w-10 h-10 text-[var(--color-brand-dark)]" />
+                  </div>
+                  <h2 className="text-3xl font-bold font-primary uppercase mb-4">Inscrição Iniciada!</h2>
+                  <p className="text-[var(--color-brand-light)]/70 font-secondary text-lg mb-8">
+                    Recebemos seus dados com sucesso. <br/> Em breve, você receberá o link para finalizar sua matrícula.
+                  </p>
+                  <button
+                    onClick={handleClose}
+                    className="w-full shape-leaf bg-white/10 hover:bg-white/20 text-white font-bold py-4 transition-all uppercase tracking-widest font-primary"
+                  >
+                    Fechar
+                  </button>
+                </motion.div>
+              )}
             </div>
           </motion.div>
         </div>
