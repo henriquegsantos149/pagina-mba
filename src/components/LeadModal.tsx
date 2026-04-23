@@ -63,7 +63,7 @@ export default function LeadModal({ isOpen, onClose }: LeadModalProps) {
 
     try {
       // Usamos keepalive: true para que a requisição continue mesmo após o redirecionamento
-      // E não usamos 'await' na resposta para que o redirecionamento seja instantâneo
+      // E redirecionamos imediatamente
       fetch('https://script.google.com/macros/s/AKfycbzoQQtPl_TazLAIbacOSLYyq_fCulFa10Dv_Wd1DOR96Xsurd9_HeSKgsv9axxm9l4PTg/exec', {
         method: 'POST',
         mode: 'no-cors',
@@ -74,16 +74,12 @@ export default function LeadModal({ isOpen, onClose }: LeadModalProps) {
         body: JSON.stringify(payload),
       });
 
-      // Pequeno timeout apenas para o usuário ver o estado de "loading" por um breve momento (melhora UX)
-      setTimeout(() => {
-        setLoading(false);
-        setSubmitted(true);
-      }, 800);
+      window.location.href = 'https://pay.voompcreators.com.br/13467/offer/eL3OTr';
 
     } catch (error) {
       console.error('Error submitting lead:', error);
-      setLoading(false);
-      setSubmitted(true); // Still show success message to user as the data was likely sent via keepalive/no-cors
+      // Mesmo em caso de erro, redirecionamos para não travar o usuário
+      window.location.href = 'https://pay.voompcreators.com.br/13467/offer/eL3OTr';
     }
   };
 
@@ -246,14 +242,14 @@ export default function LeadModal({ isOpen, onClose }: LeadModalProps) {
                   </div>
                   <h2 className="text-3xl font-bold font-primary uppercase mb-4">Inscrição Iniciada!</h2>
                   <p className="text-[var(--color-brand-light)]/70 font-secondary text-lg mb-8">
-                    Recebemos seus dados com sucesso. <br/> Em breve, você receberá o link para finalizar sua matrícula.
+                    Recebemos seus dados com sucesso. <br/> Finalize sua matrícula agora.
                   </p>
-                  <button
-                    onClick={handleClose}
-                    className="w-full shape-leaf bg-white/10 hover:bg-white/20 text-white font-bold py-4 transition-all uppercase tracking-widest font-primary"
+                  <a
+                    href="https://pay.voompcreators.com.br/13467/offer/eL3OTr"
+                    className="w-full shape-leaf bg-brand-gradient text-[var(--color-brand-dark)] font-bold py-4 transition-all uppercase tracking-widest font-primary inline-block"
                   >
-                    Fechar
-                  </button>
+                    Ir para o Checkout
+                  </a>
                 </motion.div>
               )}
             </div>
