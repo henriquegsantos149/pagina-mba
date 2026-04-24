@@ -1,5 +1,5 @@
 import { motion } from 'framer-motion';
-import { UserCheck, CheckCircle2 } from 'lucide-react';
+import { UserCheck, GraduationCap } from 'lucide-react';
 
 const profiles = [
   "Engenheiros Ambientais, Florestais e Agrônomos",
@@ -48,31 +48,26 @@ export default function TargetAudience() {
             whileInView={{ opacity: 1, scale: 1 }}
             viewport={{ once: true }}
             transition={{ duration: 0.6 }}
-            className="shape-leaf bg-black/40 border border-[var(--color-brand-primary)]/20 p-10 relative overflow-hidden backdrop-blur-sm"
+            className="shape-leaf bg-black/40 border border-white/5 p-10 relative overflow-hidden backdrop-blur-sm"
           >
-            <div className="absolute top-0 left-0 w-full h-1 bg-brand-gradient"></div>
+            <div className="flex items-center gap-4 mb-6">
+              <div className="w-12 h-12 rounded-tl-xl rounded-br-xl rounded-tr-sm rounded-bl-sm bg-white/5 flex items-center justify-center border border-white/5">
+                <GraduationCap className="w-6 h-6 text-[var(--color-brand-primary)]" />
+              </div>
+              <h3 className="text-2xl font-bold font-primary uppercase tracking-wide text-[var(--color-brand-light)]">Pré-Requisitos</h3>
+            </div>
             
-            <h3 className="text-2xl font-bold font-primary uppercase tracking-wide mb-6">Pré-Requisitos e Matrícula</h3>
-            <p className="text-[var(--color-brand-light)]/70 font-secondary leading-relaxed mb-8">
-              Para garantir o pleno aproveitamento da grade curricular avançada e a obtenção da sua chancela de Especialista, o alinhamento basal é essencial.
+            <p className="text-[var(--color-brand-light)]/80 font-secondary leading-relaxed mb-10 text-lg">
+              Para ingressar nesta Pós-Graduação e obter a certificação de especialista, o único requisito obrigatório é:
             </p>
 
-            <ul className="space-y-5">
-              <li className="flex items-start gap-4">
-                <CheckCircle2 className="w-6 h-6 text-[var(--color-brand-primary)] shrink-0 mt-0.5" />
-                <div>
-                  <h4 className="font-bold text-[var(--color-brand-light)] font-primary text-xl uppercase">Ensino Superior Completo</h4>
-                  <p className="text-sm text-[var(--color-brand-light)]/60 font-secondary mt-1">É obrigatória a apresentação do diploma de graduação (bacharelado, licenciatura ou tecnólogo) reconhecido pelo MEC para oficializar a matrícula.</p>
-                </div>
-              </li>
-              <li className="flex items-start gap-4">
-                <CheckCircle2 className="w-6 h-6 text-[var(--color-brand-primary)] shrink-0 mt-0.5" />
-                <div>
-                  <h4 className="font-bold text-[var(--color-brand-light)] font-primary text-xl uppercase">Conhecimentos Básicos</h4>
-                  <p className="text-sm text-[var(--color-brand-light)]/60 font-secondary mt-1">Conhecimento prévio básico de planilhas de dados. O MBA tem disciplinas de introdução à programação para nivelamento dos inscritos.</p>
-                </div>
-              </li>
-            </ul>
+            <div className="relative border border-white/10 rounded-tl-3xl rounded-br-3xl rounded-tr-md rounded-bl-md overflow-hidden bg-white/5 p-8">
+               <div className="absolute top-0 left-0 bottom-0 w-1.5 bg-gradient-to-b from-[var(--color-brand-primary)] to-[var(--color-brand-secondary)]"></div>
+               <div className="pl-2">
+                 <h4 className="font-bold text-white font-primary text-2xl uppercase mb-2">Diploma de Graduação</h4>
+                 <p className="text-[var(--color-brand-light)]/50 font-secondary uppercase tracking-widest text-sm">Reconhecido pelo MEC</p>
+               </div>
+            </div>
           </motion.div>
         </div>
 
