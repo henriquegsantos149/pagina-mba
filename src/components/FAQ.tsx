@@ -56,7 +56,7 @@ export default function FAQ() {
                   onClick={() => setOpenIndex(isOpen ? null : index)}
                   className="w-full px-6 py-5 flex items-center justify-between text-left group gap-4 cursor-pointer"
                 >
-                  <h3 className={`text-lg font-bold font-primary tracking-wide transition-colors duration-300 uppercase ${isOpen ? 'text-[var(--color-brand-secondary)]' : 'text-[var(--color-brand-dark)] group-hover:text-black'}`}>
+                  <h3 className={`text-base md:text-lg font-bold font-primary tracking-wide transition-colors duration-300 uppercase ${isOpen ? 'text-[var(--color-brand-secondary)]' : 'text-[var(--color-brand-dark)] group-hover:text-black'}`}>
                     {faq.question}
                   </h3>
                   <div className={`shrink-0 w-8 h-8 rounded-full flex items-center justify-center transition-colors duration-300 ${isOpen ? 'bg-[var(--color-brand-secondary)]/20' : 'bg-slate-100 group-hover:bg-slate-200'}`}>
