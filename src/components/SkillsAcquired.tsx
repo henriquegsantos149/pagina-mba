@@ -36,14 +36,14 @@ const skills = [
 
 export default function SkillsAcquired() {
   return (
-    <section className="py-16 md:py-24 bg-white/[0.02] border-y border-white/5">
+    <section className="py-16 md:py-24 bg-[var(--color-brand-light)] text-[var(--color-brand-dark)] border-y border-slate-200">
       <div className="max-w-7xl mx-auto px-6">
         
         <div className="text-center mb-16">
-          <h2 className="text-3xl md:text-5xl font-bold mb-4 font-primary uppercase tracking-wide">
+          <h2 className="text-3xl md:text-5xl font-bold mb-4 font-primary uppercase tracking-wide text-[var(--color-brand-dark)]">
             Habilidades <span className="text-brand-gradient">Adquiridas</span>
           </h2>
-          <p className="text-[var(--color-brand-light)]/70 max-w-2xl mx-auto">Tudo que você será capaz de aplicar na prática após concluir o MBA.</p>
+          <p className="text-[var(--color-brand-dark)]/70 max-w-2xl mx-auto">Tudo que você será capaz de aplicar na prática após concluir o MBA.</p>
         </div>
 
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
@@ -56,15 +56,15 @@ export default function SkillsAcquired() {
                 whileInView={{ opacity: 1, y: 0 }}
                 viewport={{ once: true }}
                 transition={{ duration: 0.5, delay: index * 0.1 }}
-                className="group p-8 shape-leaf bg-[var(--color-brand-dark)] border border-white/5 hover:border-[var(--color-brand-primary)]/40 transition-all"
+                className="group p-8 shape-leaf bg-white border border-slate-200/80 hover:border-[var(--color-brand-primary)]/50 transition-all shadow-md hover:shadow-lg shadow-slate-200/40"
               >
-                <div className="w-12 h-12 shape-leaf bg-white/5 flex items-center justify-center mb-6 group-hover:bg-brand-gradient group-hover:text-[var(--color-brand-dark)] transition-all">
-                  <Icon className="w-6 h-6" />
+                <div className="w-12 h-12 shape-leaf bg-slate-100 flex items-center justify-center mb-6 group-hover:bg-brand-gradient group-hover:text-[var(--color-brand-dark)] transition-all">
+                  <Icon className="w-6 h-6 text-[var(--color-brand-dark)] group-hover:text-[var(--color-brand-dark)]" />
                 </div>
-                <h3 className="text-xl font-bold mb-3 font-primary uppercase tracking-wide group-hover:text-[var(--color-brand-primary)] transition-colors">
+                <h3 className="text-xl font-bold mb-3 font-primary uppercase tracking-wide text-[var(--color-brand-dark)] group-hover:text-[var(--color-brand-primary)] transition-colors">
                   {skill.title}
                 </h3>
-                <p className="text-[var(--color-brand-light)]/60 font-secondary leading-relaxed">
+                <p className="text-[var(--color-brand-dark)]/70 font-secondary leading-relaxed">
                   {skill.description}
                 </p>
               </motion.div>
@@ -76,4 +76,3 @@ export default function SkillsAcquired() {
     </section>
   );
 }
-

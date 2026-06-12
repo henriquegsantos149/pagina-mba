@@ -26,8 +26,8 @@ const applications = [
 export default function PracticalApplications() {
   return (
     <section className="py-24 relative bg-[var(--color-brand-dark)]">
-      <div className="max-w-7xl mx-auto px-6">
-        
+      <div className="max-w-6xl mx-auto px-6">
+
         <div className="text-center mb-16">
           <h2 className="text-4xl md:text-5xl font-bold mb-4 font-primary uppercase tracking-wide">
             Aplicações <span className="text-brand-gradient">Práticas</span>
@@ -35,7 +35,7 @@ export default function PracticalApplications() {
           <p className="text-[var(--color-brand-light)]/70 max-w-2xl mx-auto font-secondary">O cenário prático, as portas de atuação e as soluções que você entregará resolvendo problemas reais do mercado.</p>
         </div>
 
-        <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
+        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
           {applications.map((app, index) => (
             <motion.div
               key={index}
@@ -43,21 +43,21 @@ export default function PracticalApplications() {
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true }}
               transition={{ duration: 0.5, delay: index * 0.1 }}
-              className="group flex flex-col bg-white/5 rounded-2xl overflow-hidden border border-white/10 hover:border-[var(--color-brand-green1)]/50 transition-all duration-300 shadow-lg"
+              className="group flex flex-col bg-white/5 rounded-2xl overflow-hidden border border-white/10 hover:border-[var(--color-brand-primary)]/50 transition-all duration-300 shadow-lg"
             >
-              <div className="relative h-48 sm:h-56 w-full overflow-hidden bg-black/20">
-                <img 
-                  src={app.image} 
-                  alt={app.title} 
-                  className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-110 opacity-80 group-hover:opacity-100" 
+              <div className="relative h-32 sm:h-40 w-full overflow-hidden bg-black/20">
+                <img
+                  src={app.image}
+                  alt={app.title}
+                  className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-110 opacity-80 group-hover:opacity-100"
                 />
                 <div className="absolute inset-0 bg-gradient-to-t from-[var(--color-brand-dark)] to-transparent"></div>
               </div>
-              <div className="p-6 md:p-8 flex flex-col flex-1 bg-[var(--color-brand-dark)]/50">
-                <h3 className="text-xl font-bold text-[var(--color-brand-light)] font-primary uppercase tracking-wide mb-3 group-hover:text-[var(--color-brand-green1)] transition-colors">
+              <div className="p-5 md:p-6 flex flex-col flex-1 bg-[var(--color-brand-dark)]/50">
+                <h3 className="text-lg font-bold text-[var(--color-brand-light)] font-primary uppercase tracking-wide mb-2 group-hover:text-[var(--color-brand-primary)] transition-colors">
                   {app.title}
                 </h3>
-                <p className="text-[var(--color-brand-light)]/60 font-secondary leading-relaxed">
+                <p className="text-sm text-[var(--color-brand-light)]/60 font-secondary leading-relaxed">
                   {app.description}
                 </p>
               </div>

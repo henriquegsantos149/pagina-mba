@@ -31,9 +31,7 @@ function App() {
       <Testimonials />
       <FAQ />
       
-      <div className="py-12 bg-black/40">
-        <CallToAction onOpenModal={() => setIsModalOpen(true)} />
-      </div>
+      <CallToAction onOpenModal={() => setIsModalOpen(true)} />
       
       <StickyCTA onOpenModal={() => setIsModalOpen(true)} />
 

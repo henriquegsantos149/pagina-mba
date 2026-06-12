@@ -5,9 +5,9 @@ import { ChevronLeft, ChevronRight } from 'lucide-react';
 const testimonials = [
   { id: 1, src: 'testimonial-1.jpg' },
   { id: 2, src: 'testimonial-2.jpg' },
-  { id: 3, src: 'testimonial-3.png' },
+  { id: 3, src: 'testimonial-3.webp' },
   { id: 4, src: 'testimonial-4.jpg' },
-  { id: 5, src: 'testimonial-5.png' },
+  { id: 5, src: 'testimonial-5.webp' },
 ];
 
 export default function Testimonials() {

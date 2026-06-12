@@ -29,14 +29,14 @@ export default function FAQ() {
   const [openIndex, setOpenIndex] = useState<number | null>(null);
 
   return (
-    <section id="faq" className="py-24 bg-white/[0.02] relative border-y border-white/5">
+    <section id="faq" className="py-24 bg-[var(--color-brand-light)] text-[var(--color-brand-dark)] relative border-y border-slate-200">
       <div className="max-w-4xl mx-auto px-6 relative z-10">
         
         <div className="text-center mb-16">
-          <h2 className="text-4xl md:text-5xl font-bold mb-4 font-primary uppercase tracking-wide">
+          <h2 className="text-4xl md:text-5xl font-bold mb-4 font-primary uppercase tracking-wide text-[var(--color-brand-dark)]">
             Perguntas <span className="text-brand-gradient">Frequentes</span>
           </h2>
-          <p className="text-[var(--color-brand-light)]/70 max-w-2xl mx-auto font-secondary">Ainda com dúvidas? Esclarecemos abaixo os pontos mais recorrentes sobre a estrutura do MBA.</p>
+          <p className="text-[var(--color-brand-dark)]/70 max-w-2xl mx-auto font-secondary">Ainda com dúvidas? Esclarecemos abaixo os pontos mais recorrentes sobre a estrutura do MBA.</p>
         </div>
 
         <div className="space-y-4">
@@ -50,20 +50,20 @@ export default function FAQ() {
                 whileInView={{ opacity: 1, y: 0 }}
                 viewport={{ once: true }}
                 transition={{ duration: 0.3, delay: index * 0.1 }}
-                className={`shape-leaf bg-black/30 border transition-all duration-300 ${isOpen ? 'border-[var(--color-brand-secondary)]/40 shadow-[0_0_15px_rgba(81,166,41,0.1)]' : 'border-white/5 hover:border-[var(--color-brand-accent)]/30'}`}
+                className={`shape-leaf bg-white border transition-all duration-300 ${isOpen ? 'border-[var(--color-brand-secondary)]/40 shadow-md shadow-slate-200/50' : 'border-slate-200/80 hover:border-[var(--color-brand-accent)]/30 shadow-sm'}`}
               >
                 <button 
                   onClick={() => setOpenIndex(isOpen ? null : index)}
-                  className="w-full px-6 py-5 flex items-center justify-between text-left group gap-4"
+                  className="w-full px-6 py-5 flex items-center justify-between text-left group gap-4 cursor-pointer"
                 >
-                  <h3 className={`text-lg font-bold font-primary tracking-wide transition-colors duration-300 uppercase ${isOpen ? 'text-[var(--color-brand-secondary)]' : 'text-[var(--color-brand-light)] group-hover:text-white'}`}>
+                  <h3 className={`text-lg font-bold font-primary tracking-wide transition-colors duration-300 uppercase ${isOpen ? 'text-[var(--color-brand-secondary)]' : 'text-[var(--color-brand-dark)] group-hover:text-black'}`}>
                     {faq.question}
                   </h3>
-                  <div className={`shrink-0 w-8 h-8 rounded-full flex items-center justify-center transition-colors duration-300 ${isOpen ? 'bg-[var(--color-brand-secondary)]/20' : 'bg-white/5 group-hover:bg-white/10'}`}>
+                  <div className={`shrink-0 w-8 h-8 rounded-full flex items-center justify-center transition-colors duration-300 ${isOpen ? 'bg-[var(--color-brand-secondary)]/20' : 'bg-slate-100 group-hover:bg-slate-200'}`}>
                     {isOpen ? (
                       <Minus className="w-5 h-5 text-[var(--color-brand-secondary)]" />
                     ) : (
-                      <Plus className="w-5 h-5 text-[var(--color-brand-light)]/70" />
+                      <Plus className="w-5 h-5 text-[var(--color-brand-dark)]/70" />
                     )}
                   </div>
                 </button>
@@ -78,8 +78,8 @@ export default function FAQ() {
                       className="overflow-hidden"
                     >
                       <div className="px-6 pb-6 pt-0">
-                        <div className="h-px w-full bg-white/10 mb-4"></div>
-                        <p className="text-[var(--color-brand-light)]/70 font-secondary leading-relaxed">
+                        <div className="h-px w-full bg-slate-200 mb-4"></div>
+                        <p className="text-[var(--color-brand-dark)]/85 font-secondary leading-relaxed">
                           {faq.answer}
                         </p>
                       </div>
