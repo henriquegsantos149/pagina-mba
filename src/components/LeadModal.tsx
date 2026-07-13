@@ -29,7 +29,8 @@ export default function LeadModal({ isOpen, onClose }: LeadModalProps) {
 
   const handleChange = (e: React.ChangeEvent<HTMLInputElement | HTMLSelectElement>) => {
     const { name, value } = e.target;
-    setFormData(prev => ({ ...prev, [name]: value }));
+    const cleanValue = name === 'telefone' ? value.replace(/\D/g, '').slice(0, 11) : value;
+    setFormData(prev => ({ ...prev, [name]: cleanValue }));
   };
 
   const validateEmail = (email: string) => {
@@ -165,7 +166,7 @@ export default function LeadModal({ isOpen, onClose }: LeadModalProps) {
                           required
                           value={formData.telefone}
                           onChange={handleChange}
-                          placeholder="(00) 00000-0000"
+                          placeholder="11999999999"
                           className="w-full bg-white/5 border border-white/10 rounded-lg px-4 py-3 text-white placeholder:text-white/20 focus:outline-none focus:border-[var(--color-brand-primary)]/50 transition-colors"
                         />
                       </div>
