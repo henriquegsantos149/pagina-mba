@@ -49,7 +49,7 @@ export default function CallToAction({ onOpenModal }: CallToActionProps) {
             </button>
             
             <a 
-              href="https://wa.link/sr4kvy" 
+              href="https://api.whatsapp.com/send/?phone=5521982639824&text=Ol%C3%A1!%20Tenho%20interesse%20no%20MBA%20em%20Intelig%C3%AAncia%20de%20Dados%20Ambientais.&type=phone_number&app_absent=0" 
               target="_blank"
               rel="noopener noreferrer"
               aria-label="Falar com um consultor via WhatsApp"
