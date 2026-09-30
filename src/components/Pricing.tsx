@@ -7,6 +7,10 @@ interface PricingProps {
 }
 
 export default function Pricing({ onOpenModal, isWaitingList = false }: PricingProps) {
+  const isOct1stOrLater = new Date() >= new Date('2026-10-01T00:00:00');
+  const installmentPrice = isOct1stOrLater ? 'R$ 597,01' : 'R$ 1.197,01';
+  const fullPrice = isOct1stOrLater ? 'R$ 5.970,00' : 'R$ 11.970,00';
+
   const benefits = [
     "Diploma de MBA com chancela Anhanguera (Nota Máxima no MEC)",
     "Programa completo de 12 meses com 400 horas de carga horária",
@@ -80,10 +84,10 @@ export default function Pricing({ onOpenModal, isWaitingList = false }: PricingP
                     12x de
                   </span>
                   <span className="text-5xl md:text-6xl font-black font-impact tracking-wider text-brand-gradient">
-                    R$ 1.197,01
+                    {installmentPrice}
                   </span>
                   <span className="text-[var(--color-brand-dark)]/60 text-sm block mt-2 font-secondary">
-                    ou R$ 11.970,00 à vista
+                    ou {fullPrice} à vista
                   </span>
                 </div>
 
