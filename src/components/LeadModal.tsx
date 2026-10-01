@@ -75,12 +75,12 @@ export default function LeadModal({ isOpen, onClose }: LeadModalProps) {
         body: JSON.stringify(payload),
       });
 
-      window.location.href = 'https://pay.voompcreators.com.br/13467/offer/eL3OTr';
+      window.location.href = 'https://pay.voompcreators.com.br/bKrxpWkJrygL2pXW/offer/Q3xxrG';
 
     } catch (error) {
       console.error('Error submitting lead:', error);
       // Mesmo em caso de erro, redirecionamos para não travar o usuário
-      window.location.href = 'https://pay.voompcreators.com.br/13467/offer/eL3OTr';
+      window.location.href = 'https://pay.voompcreators.com.br/bKrxpWkJrygL2pXW/offer/Q3xxrG';
     }
   };
 
