@@ -1,0 +1,4 @@
+DirectoryIndex index.html
+RewriteEngine On
+RewriteCond %{THE_REQUEST} \s/+[^\s?]*/(?:vitor|index)\.html[?\s] [NC]
+RewriteRule ^(?:vitor|index)\.html$ ./ [R=301,L]
